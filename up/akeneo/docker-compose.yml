@@ -15,7 +15,7 @@ services:
       BLACKFIRE_CLIENT_TOKEN: '${BLACKFIRE_CLIENT_TOKEN:-client_token}'
     volumes:
       - './:/srv/pim'
-      - '${HOST_COMPOSER_HOME:-~/.composer}:/var/www/.composer'
+      - '${HOST_COMPOSER_HOME:-root/docker/composer}:/var/www/.composer'
     working_dir: '/srv/pim'
     command: 'php'
     networks:
@@ -48,7 +48,7 @@ services:
       YARN_CACHE_FOLDER: '/home/node/.yarn'
     volumes:
       - './:/srv/pim'
-      - '${HOST_YARN_CACHE_FOLDER:-~/.cache/yarn}:/home/node/.yarn'
+      - '${HOST_YARN_CACHE_FOLDER:-/root/docker/yarn}:/home/node/.yarn'
     working_dir: '/srv/pim'
     networks:
       - 'pim'

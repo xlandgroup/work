@@ -3,7 +3,7 @@ version: '3.4'
 services:
   php:
     image: 'akeneo/pim-php-dev:4.0'
-    container_name: php-1
+    container_name: php-$PROJECT_NAME
     restart: always
     environment:
       APP_ENV: '${APP_ENV:-prod}'
@@ -22,7 +22,7 @@ services:
       - 'pim'
   fpm:
     image: 'akeneo/pim-php-dev:4.0'
-    container_name: fpm-1
+    container_name: fpm-$PROJECT_NAME
     restart: always
     environment:
       APP_ENV: '${APP_ENV:-prod}'
@@ -42,7 +42,7 @@ services:
 
   node:
     image: 'akeneo/node:10'
-    container_name: node-1
+    container_name: node-$PROJECT_NAME
     restart: always
     environment:
       YARN_CACHE_FOLDER: '/home/node/.yarn'
@@ -55,7 +55,7 @@ services:
       
   selenium:
     image: 'selenium/standalone-firefox-debug:2.53.1-beryllium'
-    container_name: selenium-1
+    container_name: selenium-$PROJECT_NAME
     restart: always
     volumes:
       - './:/srv/pim:ro'
@@ -66,7 +66,7 @@ services:
       
   httpd:
     image: 'httpd:2.4'
-    container_name: httpd-1
+    container_name: httpd-$PROJECT_NAME
     restart: always
     environment:
       APP_ENV: '${APP_ENV:-prod}'
@@ -83,7 +83,7 @@ services:
       
   mysql:
     image: 'mysql:8.0.18'
-    container_name: mysql-1
+    container_name: mysql-$PROJECT_NAME
     restart: always
     command: '--default-authentication-plugin=mysql_native_password'
     environment:
@@ -98,7 +98,7 @@ services:
       
   elasticsearch:
     image: 'docker.elastic.co/elasticsearch/elasticsearch-oss:7.5.1'
-    container_name: elasticsearch-1
+    container_name: elasticsearch-$PROJECT_NAME
     restart: always
     environment:
       ES_JAVA_OPTS: '${ES_JAVA_OPTS:--Xms512m -Xmx512m}'
@@ -110,7 +110,7 @@ services:
       
   object-storage:
     image: 'minio/minio'
-    container_name: minio-1
+    container_name: minio-$PROJECT_NAME
     restart: always
     entrypoint: '/bin/sh -c "mkdir -p /data/asset /data/archive /data/catalog/ /data/jobs && minio server /data"'
     environment:
@@ -123,7 +123,7 @@ services:
 
   blackfire:
     image: blackfire/blackfire
-    container_name: blackfire-1
+    container_name: blackfire-$PROJECT_NAME
     restart: always
     environment:
       BLACKFIRE_SERVER_ID: '${BLACKFIRE_SERVER_ID:-server_id}'

@@ -15,7 +15,7 @@ services:
       BLACKFIRE_CLIENT_TOKEN: '${BLACKFIRE_CLIENT_TOKEN:-client_token}'
     volumes:
       - './:/srv/pim'
-      - '${HOST_COMPOSER_HOME:-root/docker/composer}:/var/www/.composer'
+      - '${HOST_COMPOSER_HOME:-/root/docker/composer}:/var/www/.composer'
     working_dir: '/srv/pim'
     command: 'php'
     networks:
